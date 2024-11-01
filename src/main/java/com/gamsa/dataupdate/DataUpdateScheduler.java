@@ -13,7 +13,7 @@ import java.time.LocalDate;
 public class DataUpdateScheduler {
     private final ActivityDataUpdateService activityDataUpdateService;
 
-    @Value("${spring.openapi.days}")
+    @Value("${openapi.days}")
     private int days;
 
     @Scheduled(cron = "0 1 0 * * *")
