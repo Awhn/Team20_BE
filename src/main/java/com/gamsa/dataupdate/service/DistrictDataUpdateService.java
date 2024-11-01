@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.nio.file.Paths;
+import java.nio.file.Path;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -41,8 +43,8 @@ public class DistrictDataUpdateService {
     @Transactional
     public void loadDataFromCSV(String csvPath) {
         try {
-            ClassLoader classLoader = getClass().getClassLoader();
-            File file = new File(classLoader.getResource(csvPath).getFile());
+            Path path = Paths.get("src/main/resources/" + csvPath);
+            File file = path.toFile();
             FileReader fileReader = new FileReader(file);
             CSVReader csvReader = new CSVReader(fileReader);
 
